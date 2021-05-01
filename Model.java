@@ -157,8 +157,10 @@ public class Model
         if (x <= 0 + B)  ball.changeDirectionX();
         if (y >= height - B - BALL_SIZE)  // Bottom
         { 
-            ball.changeDirectionY(); 
+
+        	ball   = new GameObj(width/2, height/2, BALL_SIZE, BALL_SIZE, Color.RED );
             subtractFromLives( HIT_BOTTOM );     // lose life once you hit bottom of screen
+            
         }
         
         if (lives == 0) {

@@ -36,10 +36,10 @@ public class Controller
     switch ( event.getCode() )             
     {
       case LEFT:                     // Left Arrow
-        model.moveBat( -1);          // move bat left
+        model.moveBat( -2);          // move bat left
         break;
       case RIGHT:                    // Right arrow
-        model.moveBat( +1 );         // Move bat right
+        model.moveBat( +2 );         // Move bat right
         break;
       case F :
         // Very fast ball movement
