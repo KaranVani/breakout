@@ -102,10 +102,10 @@ public class Model
                 new GameObj(BRICK_WIDTH*6, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.ORANGE),
                 new GameObj(BRICK_WIDTH*9, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.YELLOW),
                 
-                new GameObj(0, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT*3,  Color.GREEN),
-                new GameObj(BRICK_WIDTH*3, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.BLUE),
-                new GameObj(BRICK_WIDTH*6, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.ORANGE),
-                new GameObj(BRICK_WIDTH*9, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT, Color.YELLOW),
+                new GameObj(0, BRICK_WIDTH*2, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.GREEN),
+                new GameObj(BRICK_WIDTH*3, BRICK_WIDTH*2, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.BLUE),
+                new GameObj(BRICK_WIDTH*6, BRICK_WIDTH*2, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.ORANGE),
+                new GameObj(BRICK_WIDTH*9, BRICK_WIDTH*2, BRICK_WIDTH*3, BRICK_HEIGHT, Color.YELLOW),
                 
                 new GameObj(50, 500, BRICK_WIDTH,BRICK_HEIGHT, Color.WHITE )
                 
@@ -152,7 +152,7 @@ public class Model
         // get the current ball possition (top left corner)
         int x = ball.topX;  
         int y = ball.topY;
-        // Deal with possible edge of board hit
+        // Deal with possible edge of board hit-
         if (x >= width - B - BALL_SIZE)  ball.changeDirectionX();
         if (x <= 0 + B)  ball.changeDirectionX();
         if (y >= height - B - BALL_SIZE)  // Bottom
