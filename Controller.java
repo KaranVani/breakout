@@ -53,6 +53,10 @@ public class Controller
         // stop the game
         model.setGameState("finished");
         break;
+        
+      case P: 
+    	  // pauses the game
+    	  model.setGameState("running");
     }
   }
 }

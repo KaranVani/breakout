@@ -37,7 +37,7 @@ public class Model
     // and are used by the View to display it
     public GameObj ball;                // The ball
     public GameObj[] bricks;            // The bricks
-    public GameObj bat;                 // The bat
+    public BatObj bat;                 // The bat
     public int score = 0;               // The score
 
     // variables that control the game 
@@ -89,18 +89,17 @@ public class Model
     {       
         score = 0;
         ball   = new GameObj(width/2, height/2, BALL_SIZE, BALL_SIZE, Color.RED );
-        bat    = new GameObj(width/2, height - BRICK_HEIGHT*3/2, BRICK_WIDTH*3, 
-            BRICK_HEIGHT/4, Color.GRAY);
+        bat    = new BatObj(0, height - BRICK_HEIGHT * 2, Color.PALEGOLDENROD);
         bricks = new GameObj[0];
         
         
-        // filled the code in to make a loop to show the bricks
+        // Manually insert bricks rather than a loop
         
         bricks = new GameObj[] {
-                new GameObj(0, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.GREEN),
-                new GameObj(BRICK_WIDTH*3, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.BLUE),
-                new GameObj(BRICK_WIDTH*6, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.ORANGE),
-                new GameObj(BRICK_WIDTH*9, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.YELLOW),
+                new GameObj(0, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.WHITE),
+                new GameObj(BRICK_WIDTH*3, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.WHITE),
+                new GameObj(BRICK_WIDTH*6, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.WHITE),
+                new GameObj(BRICK_WIDTH*9, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.WHITE),
                 
                 new GameObj(0, BRICK_WIDTH*2, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.GREEN),
                 new GameObj(BRICK_WIDTH*3, BRICK_WIDTH*2, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.BLUE),
@@ -134,7 +133,7 @@ public class Model
             {
                 updateGame();                        // update the game state
                 modelChanged();                      // Model changed - refresh screen
-                Thread.sleep( getFast() ? 6 : 12 ); // wait a few milliseconds
+                Thread.sleep( getFast() ? 40 : 80 ); // wait a few milliseconds
             }
             Debug.trace("Model::runGame: Game finished"); 
         } catch (Exception e) 
