@@ -90,12 +90,12 @@ public class Model
         score = 0;
         ball   = new BallObj(width/2, height/2, Color.RED );
         bat    = new BatObj(width/4*3, height - BRICK_HEIGHT * 2, Color.PALEGOLDENROD);
-        bricks = new GameObj[0];
+        bricks = new BrickObj[0];
         
         
         // Manually insert bricks rather than a loop
         
-        bricks = new GameObj[] {
+        bricks = new BrickObj[] {
 //                new GameObj(0, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.WHITE),
 //                new GameObj(BRICK_WIDTH*3, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.WHITE),
 //                new GameObj(BRICK_WIDTH*6, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.WHITE),
@@ -106,7 +106,7 @@ public class Model
 //                new GameObj(BRICK_WIDTH*6, BRICK_WIDTH*2, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.ORANGE),
 //                new GameObj(BRICK_WIDTH*9, BRICK_WIDTH*2, BRICK_WIDTH*3, BRICK_HEIGHT, Color.YELLOW),
                 
-                new GameObj(width/2, 200, BRICK_WIDTH*4,BRICK_HEIGHT, Color.WHITE )
+                new BrickObj(width/2, 200, Color.WHITE )
                 
                 
                 
