@@ -18,6 +18,9 @@ public class Model
     public int M              = 40;     // Height of menu bar space at the top
 
     public int BALL_SIZE      = 30;     // Ball side
+    
+    public int BRICK_R        = 15;
+    public int BRICK_C		  = 15;
     public int BRICK_WIDTH    = 50;     // Brick size
     public int BRICK_HEIGHT   = 30;
 
@@ -93,7 +96,18 @@ public class Model
         bricks = new BrickObj[0];
         
         
+        for (int i=0; i <= BRICK_R * BRICK_C;i += BRICK_HEIGHT ) {
+        	for(int y=0; y <= width; y += BRICK_WIDTH ){
+        		
+        		
+        		new BrickObj(width/2,200,Color.WHITE);
+        		
+        	}
+        }
         // Manually insert bricks rather than a loop
+        
+        
+    
         
         bricks = new BrickObj[] {
 //                new GameObj(0, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.WHITE),
@@ -150,7 +164,9 @@ public class Model
         ball.moveY(BALL_MOVE);
         // get the current ball possition (top left corner)
         int x = ball.topX;  
+        Debug.trace("Position of Ball " + x); 
         int y = ball.topY;
+        Debug.trace("Position of Ball " + y); 
         // Deal with possible edge of board hit-
         if (x >= width - B - BALL_SIZE)  ball.changeDirectionX();
         if (x <= 0 + B)  ball.changeDirectionX();
@@ -210,7 +226,7 @@ public class Model
         
         // check whether ball has hit the bat
         if ( bat.hitside(ball) ) {
-            ball.changeDirectionY();
+            ball.changeDirectionX();
         }
         
         if (bat.hitTopBot(ball)) {

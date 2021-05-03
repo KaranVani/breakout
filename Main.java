@@ -22,8 +22,8 @@ public class Main extends Application
     // object) and starts the game running (in the Model object)
     public void start(Stage window) 
     {
-        int H = 800;         // Height of game window (in pixels)
-        int W = 600;         // Width  of game window (in pixels)
+        int H = 1000;         // Height of game window (in pixels)
+        int W = 900;         // Width  of game window (in pixels)
 
         // set up debugging and print initial debugging message
         Debug.set(true);    // change this to 'false' to stop breakout printing messages         

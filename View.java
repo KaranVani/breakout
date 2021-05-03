@@ -109,7 +109,7 @@ public class View implements EventHandler<KeyEvent>
             gc.fillRect( 0, 0, width, height );
             
             // draw the bat and ball
-            displayGameObj( gc, ball );   // Display the Ball
+            displayGameObj( gc, ball);   // Display the Ball
             displayGameObj( gc, bat  );   // Display the Bat
             
 
