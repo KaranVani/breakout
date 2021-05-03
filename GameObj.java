@@ -58,17 +58,48 @@ public class GameObj
     // Detect collision between this object and the argument object
     // It's easiest to work out if they do NOT overlap, and then
     // return the opposite
-    public boolean hitBy( GameObj obj )
-    {
-        boolean separate =  
-            topX >= obj.topX+obj.width     ||    // '||' means 'or'
-            topX+width <= obj.topX         ||
-            topY >= obj.topY+obj.height    ||
-            topY+height <= obj.topY ;
-        
-        // use ! to return the opposite result - hitBy is 'not separate')
-        return(! separate);  
-          
+   
+    public boolean hitside(GameObj obj) {
+    		
+    	boolean intersectingX =
+    			topX+width >= obj.topX &&
+    			topX <= obj.topX +obj.width; //checking if it is CURRENTLY crossing X axis
+    			Debug.trace("interesecting X %s", intersectingX + "");
+    			
+    			
+    	boolean abouttointersectY =
+    			topY+height >= obj.topX + Model.BALL_MOVE &&  
+    			topY <= obj.topY + obj.height - Model.BALL_MOVE; //checking if it is GOING TO  crossing X axis
+    			
+    	boolean hitside = 
+    			intersectingX && abouttointersectY;
+    			
+    	return hitside;
     }
+    
+    public boolean hitTopBot(GameObj obj) {
+    	
+    	boolean intersectingY = 
+    			topY+height >= obj.topX &&  
+    			topY <= obj.topY + obj.height; //checking if it is CURRENTLY crossing X axis
+    			Debug.trace("interesecting Y %s", intersectingY + "");
+    			
+    	boolean abouttointersectX =
+    			topX+width >= obj.topX - Model.BALL_MOVE&&
+    			topX <= obj.topX +obj.width + Model.BALL_MOVE; //checking if it is GOING crossing X axis
+    			
+    	
+    	boolean hitvertical= 
+    			intersectingY && abouttointersectX;
+    	
+    	
+    			
+    			
+    	return hitvertical;
+    	
+    	
+    	
+    }    
+    
 
 }

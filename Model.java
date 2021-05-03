@@ -22,7 +22,7 @@ public class Model
     public int BRICK_HEIGHT   = 30;
 
     public int BAT_MOVE       = 5;      // Distance to move bat on each keypress
-    public int BALL_MOVE      = 3;      // Units to move the ball on each step
+    public static int BALL_MOVE      = 3;      // Units to move the ball on each step changed to static to reference globally
 
     public int HIT_BRICK      = 50;     // Score for hitting a brick
     public int HIT_BOTTOM     = -200;   // Score (penalty) for hitting the bottom of the screen
@@ -88,25 +88,25 @@ public class Model
     public void initialiseGame()
     {       
         score = 0;
-        ball   = new GameObj(width/2, height/2, BALL_SIZE, BALL_SIZE, Color.RED );
-        bat    = new BatObj(0, height - BRICK_HEIGHT * 2, Color.PALEGOLDENROD);
+        ball   = new BallObj(width/2, height/2, Color.RED );
+        bat    = new BatObj(width/4*3, height - BRICK_HEIGHT * 2, Color.PALEGOLDENROD);
         bricks = new GameObj[0];
         
         
         // Manually insert bricks rather than a loop
         
         bricks = new GameObj[] {
-                new GameObj(0, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.WHITE),
-                new GameObj(BRICK_WIDTH*3, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.WHITE),
-                new GameObj(BRICK_WIDTH*6, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.WHITE),
-                new GameObj(BRICK_WIDTH*9, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.WHITE),
+//                new GameObj(0, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.WHITE),
+//                new GameObj(BRICK_WIDTH*3, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.WHITE),
+//                new GameObj(BRICK_WIDTH*6, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.WHITE),
+//                new GameObj(BRICK_WIDTH*9, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.WHITE),
+//                
+//                new GameObj(0, BRICK_WIDTH*2, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.GREEN),
+//                new GameObj(BRICK_WIDTH*3, BRICK_WIDTH*2, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.BLUE),
+//                new GameObj(BRICK_WIDTH*6, BRICK_WIDTH*2, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.ORANGE),
+//                new GameObj(BRICK_WIDTH*9, BRICK_WIDTH*2, BRICK_WIDTH*3, BRICK_HEIGHT, Color.YELLOW),
                 
-                new GameObj(0, BRICK_WIDTH*2, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.GREEN),
-                new GameObj(BRICK_WIDTH*3, BRICK_WIDTH*2, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.BLUE),
-                new GameObj(BRICK_WIDTH*6, BRICK_WIDTH*2, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.ORANGE),
-                new GameObj(BRICK_WIDTH*9, BRICK_WIDTH*2, BRICK_WIDTH*3, BRICK_HEIGHT, Color.YELLOW),
-                
-                new GameObj(50, 500, BRICK_WIDTH,BRICK_HEIGHT, Color.WHITE )
+                new GameObj(width/2, 200, BRICK_WIDTH*4,BRICK_HEIGHT, Color.WHITE )
                 
                 
                 
@@ -133,7 +133,7 @@ public class Model
             {
                 updateGame();                        // update the game state
                 modelChanged();                      // Model changed - refresh screen
-                Thread.sleep( getFast() ? 40 : 80 ); // wait a few milliseconds
+                Thread.sleep( getFast() ? 10 : 600); // wait a few milliseconds
             }
             Debug.trace("Model::runGame: Game finished"); 
         } catch (Exception e) 
@@ -158,7 +158,7 @@ public class Model
         { 
 
         	ball   = new GameObj(width/2, height/2, BALL_SIZE, BALL_SIZE, Color.RED );
-            subtractFromLives( HIT_BOTTOM );     // lose life once you hit bottom of screen
+           // subtractFromLives( HIT_BOTTOM );     // lose life once you hit bottom of screen
             
         }
         
@@ -166,10 +166,19 @@ public class Model
         	
         	gameState = "finished";
         }
+        
+        if (y >= height - B - BALL_SIZE)  // Bottom
+        { 
+            ball.changeDirectionY(); 
+            addToScore( HIT_BOTTOM );     // score penalty for hitting the bottom of the screen
+        }
+        if (y <= 0 + M)  ball.changeDirectionY();
         if (y <= 0 + M)  ball.changeDirectionY();
 
        // check whether ball has hit a (visible) brick
         boolean hit = false;
+        boolean hitside = false;
+
 
         // *[3]******************************************************[3]*
         // * Fill in code to check if a visible brick has been hit      *
@@ -179,22 +188,35 @@ public class Model
         // **************************************************************
        
         for (GameObj brick : bricks) {
-        	if (brick.visible && brick.hitBy(ball)) {
-        		hit = true;
-        		brick.visible = false;
-        		score =+ HIT_BRICK;
+        	if (brick.visible )
+        	{
+        		if (brick.hitside(ball)) {
+        			ball.changeDirectionX();
+        			Debug.trace("HIT BRICK SIDE" );
+        		}
+        		if (brick.hitTopBot(ball)) { 
+        			ball.changeDirectionY();
+        		
+        			Debug.trace("HIT BRICK SIDE" );
+        		}
+
+        		
+        		//brick.visible = false;
+        		//score =+ HIT_BRICK;
         	}
         }
         
 
-        if (hit) {
+        
+        // check whether ball has hit the bat
+        if ( bat.hitside(ball) ) {
             ball.changeDirectionY();
         }
         
-        // check whether ball has hit the bat
-        if ( ball.hitBy(bat) ) {
-            ball.changeDirectionY();
+        if (bat.hitTopBot(ball)) {
+        	ball.changeDirectionY();
         }
+        
     }
 
     // This is how the Model talks to the View
