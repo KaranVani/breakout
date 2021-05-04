@@ -23,6 +23,7 @@ public class Model
     public int BRICK_C		  = 15;
     public int BRICK_WIDTH    = 50;     // Brick size
     public int BRICK_HEIGHT   = 30;
+    public int jennifer = 1;
 
     public int BAT_MOVE       = 5;      // Distance to move bat on each keypress
     public static int BALL_MOVE      = 3;      // Units to move the ball on each step changed to static to reference globally
@@ -92,39 +93,46 @@ public class Model
     {       
         score = 0;
         ball   = new BallObj(width/2, height/2, Color.RED );
-        bat    = new BatObj(width/4*3, height - BRICK_HEIGHT * 2, Color.PALEGOLDENROD);
+        bat    = new BatObj(width/2-150, height - BRICK_HEIGHT * 2, Color.PALEGOLDENROD);
         bricks = new BrickObj[0];
         
         
-        for (int i=0; i <= BRICK_R * BRICK_C;i += BRICK_HEIGHT ) {
-        	for(int y=0; y <= width; y += BRICK_WIDTH ){
-        		
-        		
-        		new BrickObj(width/2,200,Color.WHITE);
-        		
-        	}
-        }
+        
+//	  public int BRICK_R        = 15;
+//    public int BRICK_C		  = 15;
+//    public int BRICK_WIDTH    = 50;     // Brick size
+//    public int BRICK_HEIGHT   = 30;
+// int H = 1000;         // Height of game window (in pixels)
+//        int W = 900;  
+        	
+        	int max_BRICK_COLUMN = width/BRICK_WIDTH;
+        	int max_BRICK_ROWS = height/BRICK_HEIGHT;
+        	Debug.trace("Max amount of colums is: %s", + max_BRICK_COLUMN);
+        	Debug.trace("Max amount of rows is: %s", + max_BRICK_ROWS);
+        	
+        	
+        	
+        	
+//        	for (int j =0; j<= max_BRICK_COLUMN;j += 1) {
+//        		jennifer += BRICK_WIDTH;
+//        		bricks = new BrickObj[] {
+//        				
+//                 new BrickObj(jennifer, 200, Color.WHITE ),
+//                 new BrickObj(jennifer, 200, Color.WHITE ),
+//
+//              };
+//        		Debug.trace("jennifer  " + jennifer);
+//        	}
+        	
+        	
+    }       	
+            
         // Manually insert bricks rather than a loop
         
         
     
         
-        bricks = new BrickObj[] {
-//                new GameObj(0, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.WHITE),
-//                new GameObj(BRICK_WIDTH*3, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.WHITE),
-//                new GameObj(BRICK_WIDTH*6, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.WHITE),
-//                new GameObj(BRICK_WIDTH*9, BRICK_WIDTH, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.WHITE),
-//                
-//                new GameObj(0, BRICK_WIDTH*2, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.GREEN),
-//                new GameObj(BRICK_WIDTH*3, BRICK_WIDTH*2, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.BLUE),
-//                new GameObj(BRICK_WIDTH*6, BRICK_WIDTH*2, BRICK_WIDTH*3, BRICK_HEIGHT,  Color.ORANGE),
-//                new GameObj(BRICK_WIDTH*9, BRICK_WIDTH*2, BRICK_WIDTH*3, BRICK_HEIGHT, Color.YELLOW),
-                
-                new BrickObj(width/2, 200, Color.WHITE )
-                
-                
-                
-                };
+        
         
         // *[1]******************************************************[1]*
         // * Fill in code to make the bricks array                      *
@@ -132,7 +140,6 @@ public class Model
         
         
         
-    }
 
     
     // The main animation loop
@@ -147,7 +154,7 @@ public class Model
             {
                 updateGame();                        // update the game state
                 modelChanged();                      // Model changed - refresh screen
-                Thread.sleep( getFast() ? 10 : 600); // wait a few milliseconds
+                Thread.sleep( getFast() ? 10 : 6); // wait a few milliseconds
             }
             Debug.trace("Model::runGame: Game finished"); 
         } catch (Exception e) 
