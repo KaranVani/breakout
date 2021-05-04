@@ -164,16 +164,16 @@ public class Model
         ball.moveY(BALL_MOVE);
         // get the current ball possition (top left corner)
         int x = ball.topX;  
-        Debug.trace("Position of Ball " + x); 
+//        Debug.trace("Position of Ball " + x); 
         int y = ball.topY;
-        Debug.trace("Position of Ball " + y); 
+//        Debug.trace("Position of Ball " + y); 
         // Deal with possible edge of board hit-
+        if (y <= 50) ball.changeDirectionY(); 
         if (x >= width - B - BALL_SIZE)  ball.changeDirectionX();
         if (x <= 0 + B)  ball.changeDirectionX();
         if (y >= height - B - BALL_SIZE)  // Bottom
         { 
-
-        	ball   = new GameObj(width/2, height/2, BALL_SIZE, BALL_SIZE, Color.RED );
+//        	ball   = new GameObj(width/2, height/2, BALL_SIZE, BALL_SIZE, Color.RED );
            // subtractFromLives( HIT_BOTTOM );     // lose life once you hit bottom of screen
             
         }
@@ -206,14 +206,13 @@ public class Model
         for (GameObj brick : bricks) {
         	if (brick.visible )
         	{
-        		if (brick.hitside(ball)) {
+        		if (brick.hitSide(ball)) {
         			ball.changeDirectionX();
         			Debug.trace("HIT BRICK SIDE" );
         		}
         		if (brick.hitTopBot(ball)) { 
         			ball.changeDirectionY();
         		
-        			Debug.trace("HIT BRICK SIDE" );
         		}
 
         		
@@ -225,12 +224,15 @@ public class Model
 
         
         // check whether ball has hit the bat
-        if ( bat.hitside(ball) ) {
+        if ( bat.hitSide(ball) ) {
             ball.changeDirectionX();
+            
+        	Debug.trace("HIT bat SIDE" );
         }
         
         if (bat.hitTopBot(ball)) {
         	ball.changeDirectionY();
+        	Debug.trace("HIT bat top" );
         }
         
     }
