@@ -135,7 +135,10 @@ public class View implements EventHandler<KeyEvent>
     public void displayGameObj( GraphicsContext gc, GameObj go )
     {
         gc.setFill( go.colour );
-        gc.fillRect( go.topX, go.topY, go.width, go.height );
+        if (go instanceof BallObj) gc.fillOval(go.topX, go.topY, go.width, go.height);
+        else gc.fillRect( go.topX, go.topY, go.width, go.height );
+        
+        
     }
 
     // This is how the Model talks to the View
