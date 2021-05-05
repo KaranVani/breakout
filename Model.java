@@ -94,46 +94,29 @@ public class Model
         score = 0;
         ball   = new BallObj(width/2, height/2, Color.RED );
         bat    = new BatObj(width/2-150, height - BRICK_HEIGHT * 2, Color.PALEGOLDENROD);
-        bricks = new BrickObj[0];
         
         
-        
-//	  public int BRICK_R        = 15;
-//    public int BRICK_C		  = 15;
-//    public int BRICK_WIDTH    = 50;     // Brick size
-//    public int BRICK_HEIGHT   = 30;
-// int H = 1000;         // Height of game window (in pixels)
-//        int W = 900;  
-        	
         	int max_BRICK_COLUMN = width/BRICK_WIDTH;
-        	int max_BRICK_ROWS = height/BRICK_HEIGHT;
+        	int max_BRICK_ROWS = (height/BRICK_HEIGHT)/8;
         	Debug.trace("Max amount of colums is: %s", + max_BRICK_COLUMN);
         	Debug.trace("Max amount of rows is: %s", + max_BRICK_ROWS);
         	
         	
         	
-        	
-//        	for (int j =0; j<= max_BRICK_COLUMN;j += 1) {
-//        		jennifer += BRICK_WIDTH;
-//        		bricks = new BrickObj[] {
-//        				
-//                 new BrickObj(jennifer, 200, Color.WHITE ),
-//                 new BrickObj(jennifer, 200, Color.WHITE ),
-//
-//              };
-//        		Debug.trace("jennifer  " + jennifer);
-//        	}
-        	
+        	bricks = new BrickObj[max_BRICK_COLUMN*max_BRICK_ROWS];
+        	int posX = 70;
+        	int posY = 70;
+
+        				for (int j = 0; j < max_BRICK_ROWS; j++) {
+        					for (int i = 0; i < max_BRICK_COLUMN; i++) {
+        						bricks[i+(j*(max_BRICK_COLUMN))] = new BrickObj(posX*i,posY*(j+1), Color.RED);
+        					}
+        					
+        				}
         	
     }       	
             
-        // Manually insert bricks rather than a loop
-        
-        
-    
-        
-        
-        
+       
         // *[1]******************************************************[1]*
         // * Fill in code to make the bricks array                      *
         // **************************************************************
@@ -219,12 +202,13 @@ public class Model
         		}
         		if (brick.hitTopBot(ball)) { 
         			ball.changeDirectionY();
+        			Debug.trace("HIT BRICK SIDE" );
         		
         		}
 
         		
-        		//brick.visible = false;
-        		//score =+ HIT_BRICK;
+//        		brick.visible = false;
+//        		score =+ HIT_BRICK;
         	}
         }
         
