@@ -32,6 +32,8 @@ public class Model
     public int HIT_BOTTOM     = -200;   // Score (penalty) for hitting the bottom of the screen
     
     public int lives		  = 3;      //The lives the player has when starting the game
+    
+	Color colors[] = {Color.RED, Color.YELLOW, Color.PINK, Color.GREEN, Color.ORANGE, Color.YELLOW, Color.BLUE}; // Colors for the random colors of the bricks
 
     // The other parts of the model-view-controller setup
     View view;
@@ -92,7 +94,7 @@ public class Model
     public void initialiseGame()
     {       
         score = 0;
-        ball   = new BallObj(width/2, height/2, Color.RED );
+        ball   = new BallObj(width/2, height/2, Color.PURPLE );
         bat    = new BatObj(width/2-150, height - BRICK_HEIGHT * 2, Color.PALEGOLDENROD);
         
         
@@ -109,7 +111,9 @@ public class Model
 
         				for (int j = 0; j < max_BRICK_ROWS; j++) {
         					for (int i = 0; i < max_BRICK_COLUMN; i++) {
-        						bricks[i+(j*(max_BRICK_COLUMN))] = new BrickObj(posX*i,posY*(j+1), Color.RED);
+        						
+        				        int rand = (int)(Math.random() * (colors.length - 0));	
+        						bricks[i+(j*(max_BRICK_COLUMN))] = new BrickObj(posX*i,posY*(j+1), colors[rand]);
         					}
         					
         				}
@@ -199,21 +203,17 @@ public class Model
         		if (brick.hitSide(ball)) {
         			ball.changeDirectionX();
         			Debug.trace("HIT BRICK SIDE" );
+        			brick.visible = false;
+        			score =+ HIT_BRICK;
         		}
         		if (brick.hitTopBot(ball)) { 
         			ball.changeDirectionY();
         			Debug.trace("HIT BRICK SIDE" );
-        		
+        			brick.visible = false;
+        			score =+ HIT_BRICK;
         		}
-
-        		
-//        		brick.visible = false;
-//        		score =+ HIT_BRICK;
         	}
         }
-        
-
-        
         // check whether ball has hit the bat
         if ( bat.hitSide(ball) ) {
             ball.changeDirectionX();
