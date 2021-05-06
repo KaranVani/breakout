@@ -4,10 +4,14 @@ package breakout;
 
 // We need to access some JavaFX classes so we list ('import') them here
 import javafx.application.Application;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application
 {
+	
+	Stage window;
+	Scene startscene, endscene;
     // The 'main' method - this is only used when launching from the command line.
     public static void main( String args[] )
     {

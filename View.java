@@ -68,6 +68,7 @@ public class View implements EventHandler<KeyEvent>
         // infoText box for the score - a label which we position in front of
         // the canvas (by adding it to the pane after the canvas)
         infoText = new Label("BreakOut: Score = " + score);
+        infoText = new Label("Lives= " + model.lives);
         infoText.setTranslateX(50);  // these commands setthe position of the text box
         infoText.setTranslateY(10);  // (measuring from the top left corner)
         pane.getChildren().add(infoText);  // add label to the pane
@@ -83,6 +84,7 @@ public class View implements EventHandler<KeyEvent>
 
         // put the scene in the window and display it
         window.setScene(scene);
+        window.setTitle("Best Breakout Game Ever");
         window.show();
     }
 
@@ -113,11 +115,7 @@ public class View implements EventHandler<KeyEvent>
             displayGameObj( gc, bat  );   // Display the Bat
             
 
-            // *[2]****************************************************[2]*
-            // * Display the bricks that make up the game                 *
-            // * Fill in code to display bricks from the brick array      *
-            // * Remember only a visible brick is to be displayed         *
-            // ************************************************************
+            //displaying the bricks here
             for (GameObj brick: bricks) {
                 if (brick.visible) {
                     displayGameObj(gc, brick);
@@ -135,7 +133,7 @@ public class View implements EventHandler<KeyEvent>
     public void displayGameObj( GraphicsContext gc, GameObj go )
     {
         gc.setFill( go.colour );
-        if (go instanceof BallObj) gc.fillOval(go.topX, go.topY, go.width, go.height);
+        if (go instanceof BallObj) gc.fillOval(go.topX, go.topY, go.width, go.height); // this makes the ball a circular object instead of a square
         else gc.fillRect( go.topX, go.topY, go.width, go.height );
         
         

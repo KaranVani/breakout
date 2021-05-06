@@ -8,6 +8,9 @@ package breakout;
 // every 20 milliseconds and checks for collisions 
 
 import javafx.scene.paint.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import java.io.File;
 import javafx.application.Platform;
 
 public class Model 
@@ -186,8 +189,6 @@ public class Model
         if (y <= 0 + M)  ball.changeDirectionY();
 
        // check whether ball has hit a (visible) brick
-        boolean hit = false;
-        boolean hitside = false;
 
 
         // *[3]******************************************************[3]*
