@@ -1,5 +1,7 @@
 package breakout;
 
+ 
+
 // An object in the game, represented as a rectangle, with a position,
 // a size, a colour and a direction of movement.
 

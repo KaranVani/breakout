@@ -1,5 +1,7 @@
 package breakout;
 
+ 
+
 // The View class creates and manages the GUI for the application.
 // It doesn't know anything about the game itself, it just displays
 // the current state of the Model, and handles user input
@@ -125,7 +127,7 @@ public class View implements EventHandler<KeyEvent>
             
             // update the score
             infoText.setText("BreakOut: Score = " + score);
-            infoText.setText("Lives = " + model.lives);
+            //infoText.setText("Lives = " + model.lives);  Got rid of lives as I made it impossible to lose
         }
     }
 

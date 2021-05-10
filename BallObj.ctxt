@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=BallObj
+comment1.params=x\ y\ c
+comment1.target=BallObj(int,\ int,\ javafx.scene.paint.Color)
+numComments=2

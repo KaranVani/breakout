@@ -1,5 +1,7 @@
 package breakout;
 
+ 
+
 import javafx.scene.paint.Color;
 
 public class BatObj extends GameObj {

@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=BrickObj
+comment1.params=x\ y\ c
+comment1.target=BrickObj(int,\ int,\ javafx.scene.paint.Color)
+numComments=2

@@ -1,5 +1,7 @@
 package breakout;
 
+ 
+
 // The model represents all the actual content and functionality of the game
 // For Breakout, it manages all the game objects that the View needs
 // (the bat, ball, bricks, and the score), provides methods to allow the Controller
@@ -190,13 +192,6 @@ public class Model
 
        // check whether ball has hit a (visible) brick
 
-
-        // *[3]******************************************************[3]*
-        // * Fill in code to check if a visible brick has been hit      *
-        // * The ball has no effect on an invisible brick               *
-        // * If a brick has been hit, change its 'visible' setting to   *
-        // * false so that it will 'disappear'                          * 
-        // **************************************************************
        
         for (GameObj brick : bricks) {
         	if (brick.visible )
@@ -209,7 +204,7 @@ public class Model
         		}
         		if (brick.hitTopBot(ball)) { 
         			ball.changeDirectionY();
-        			Debug.trace("HIT BRICK SIDE" );
+        			Debug.trace("HIT BRICK Top" );
         			brick.visible = false;
         			score =+ HIT_BRICK;
         		}
