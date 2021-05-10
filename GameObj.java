@@ -24,12 +24,12 @@ public class GameObj
     public int   dirY   = 1;            // Direction Y (1, 0 or -1)
 
 
-    public GameObj( int x, int y, int w, int h, Color c )
+    public GameObj( int x, int y, int i, int j, Color c )
     {
         topX   = x;       
         topY = y;
-        width  = w; 
-        height = h; 
+        width  = i; 
+        height = j; 
         colour = c;
     }
 

@@ -21,8 +21,8 @@ import javafx.stage.Stage;
 public class View implements EventHandler<KeyEvent>
 { 
     // variables for components of the user interface
-    public int width;       // width of window
-    public int height;      // height of window
+    protected int width;       // width of window
+    protected int height;      // height of window
 
     // user interface objects
     public Pane pane;       // basic layout pane

@@ -19,26 +19,25 @@ public class Model
 {
     // First,a collection of useful values for calculating sizes and layouts etc.
 
-    public int B              = 6;      // Border round the edge of the panel
-    public int M              = 40;     // Height of menu bar space at the top
+    public byte B              = 6;      // Border round the edge of the panel
+    public byte M              = 40;     // Height of menu bar space at the top
 
-    public int BALL_SIZE      = 30;     // Ball side
+    public byte BALL_SIZE      = 30;     // Ball side
     
-    public int BRICK_R        = 15;
-    public int BRICK_C		  = 15;
-    public int BRICK_WIDTH    = 50;     // Brick size
-    public int BRICK_HEIGHT   = 30;
-    public int jennifer = 1;
+    public byte BRICK_R        = 15;
+    public byte BRICK_C		  = 15;
+    public byte BRICK_WIDTH    = 50;     // Brick size
+    public byte BRICK_HEIGHT   = 30;
 
-    public int BAT_MOVE       = 5;      // Distance to move bat on each keypress
-    public static int BALL_MOVE      = 3;      // Units to move the ball on each step changed to static to reference globally
+    public byte BAT_MOVE       = 5;      // Distance to move bat on each keypress
+    public static byte BALL_MOVE      = 3;      // Units to move the ball on each step changed to static to reference globally
 
-    public int HIT_BRICK      = 50;     // Score for hitting a brick
-    public int HIT_BOTTOM     = -200;   // Score (penalty) for hitting the bottom of the screen
+    public byte HIT_BRICK      = 50;     // Score for hitting a brick
+    public short HIT_BOTTOM     = -200;   // Score (penalty) for hitting the bottom of the screen
     
     public int lives		  = 3;      //The lives the player has when starting the game
     
-	Color colors[] = {Color.RED, Color.YELLOW, Color.PINK, Color.GREEN, Color.ORANGE, Color.YELLOW, Color.BLUE}; // Colors for the random colors of the bricks
+	private Color colors[] = {Color.RED, Color.YELLOW, Color.PINK, Color.GREEN, Color.ORANGE, Color.YELLOW, Color.BLUE}; // Colors for the random colors of the bricks
 
     // The other parts of the model-view-controller setup
     View view;
@@ -125,14 +124,6 @@ public class Model
         	
     }       	
             
-       
-        // *[1]******************************************************[1]*
-        // * Fill in code to make the bricks array                      *
-        // **************************************************************
-        
-        
-        
-
     
     // The main animation loop
     public void runGame()
