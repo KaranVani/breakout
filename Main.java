@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 
 // We need to access some JavaFX classes so we list ('import') them here
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -32,6 +33,7 @@ public class Main extends Application
     // object) and starts the game running (in the Model object)
     public void start(Stage window) throws Exception  
     {
+    	
         int H = 1000;         // Height of game window (in pixels)
         int W = 900;         // Width  of game window (in pixels)
 
@@ -46,6 +48,7 @@ public class Main extends Application
 
         // Link them together so they can talk to each other
         // Each one has instance variables for the other two
+        music();
         model.view = view;
         model.controller = controller;
         
@@ -65,4 +68,13 @@ public class Main extends Application
         // application is now running - print a debug message to say so
         Debug.trace("Main::start: Breakout running"); 
     }
+    
+    MediaPlayer mediaPlayer;
+	public void music() {
+		String s = "res/music.mp3";
+		Media h = new Media(Paths.get(s).toUri().toString());
+		mediaPlayer = new MediaPlayer(h);
+		mediaPlayer.play();
+		
+	}
 }
