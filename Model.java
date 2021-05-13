@@ -296,10 +296,14 @@ public class Model
 	}
 
 	// move the bat one step - -1 is left, +1 is right
+	
+	
 	public synchronized void moveBat( int direction )
 	{        
+	if ((direction == -2 && (!(bat.topX <= 0 + B)))|| direction == 2 && (!(bat.topX >= width - B - bat.width))) {  	//this is to restict the bat going outside of the screen	
 		int dist = direction * BAT_MOVE;    // Actual distance to move
 		Debug.trace( "Model::moveBat: Move bat = " + dist );
 		bat.moveX(dist);
+		}
 	}
 }   

@@ -35,6 +35,8 @@ public class Controller
     // KeyEvent also provides variables LEFT, RIGHT, F, N, S (etc) which are the codes
     // for individual keys. So you can add keys here just by using ther name (which you
     // can find out by googling 'JavaFX KeyCode')
+    
+    
     switch ( event.getCode() )             
     {
       case LEFT:                     // Left Arrow
@@ -56,9 +58,7 @@ public class Controller
         model.setGameState("finished");
         break;
         
-      case P: 
-    	  // pauses the game
-    	  model.setGameState("running");
+      
     }
   }
 }
