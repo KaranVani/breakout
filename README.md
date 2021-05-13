@@ -2,6 +2,8 @@
 
 # BREAK-OUT GAME
 
+This is a Rough Copy of the Documentation, this README does not contain pictures. 
+
 A Karan Vani Production
 
 MAY 7, 2021
