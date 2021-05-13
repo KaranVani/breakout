@@ -1,6 +1,6 @@
 
 
-BREAK-OUT GAME
+# BREAK-OUT GAME
 
 A Karan Vani Production
 
@@ -48,9 +48,8 @@ Table of Contents
 
 
 
-Breakout Game
 
-Introduction
+## Introduction
 
 Breakout or more commonly known as ‘Brick Breaker’ is a game a game consisting of three
 
@@ -60,13 +59,13 @@ is to break all the bricks on the screen using the bat. I will be using a skelet
 
 University of Brighton. This game is fully coded in Java in the Eclipse IDE.
 
-Running the Code
+## Running the Code
 
 The submission includes a zip file that has the game’s source code and if needed the assets for
 
 the game itself.
 
-In Eclipse:
+### In Eclipse:
 
 To run the game, extract the zip file into a desired folder and import it into Eclipse. Once
 
@@ -74,7 +73,7 @@ imported, you will need to select your own JavaFX library installed on the compu
 
 without any problems. Then click run on the top which is a green circle with a white play button.
 
-In BlueJ:
+### In BlueJ:
 
 To run the game, there is a file called package and is a BlueJ project file. Run this file, it will open
 
@@ -84,7 +83,7 @@ run the game and show a console in the background.
 
 The Code
 
-Data Types
+## Data Types
 
 Developing games and programs has a certain impact on the memory/ram of the machine it is
 
@@ -96,13 +95,11 @@ running. A game like this would not take as much memory but for good practice I 
 
 
 
-Breakout Game
-
 data types and access modifiers. Due to the classes sharing a majority of the information, a lot of the
 
 access modifiers were kept as public.
 
-The MVC
+## The MVC
 
 The game and the code are based on the MVC (Model View Controller) design. Where all these
 
@@ -128,13 +125,7 @@ take control over an individual object easily.
 
 
 
-
-
-
-
-Breakout Game
-
-Adding Bricks
+## Adding Bricks
 
 The game was missing a crucial aspect, the bricks. To form
 
@@ -158,9 +149,7 @@ for the columns and formed the randomly colored bricks.
 
 
 
-Breakout Game
-
-The Collision
+## The Collision
 
 Once the core game objects and game was set in place, it was time for the collision. The code
 
@@ -196,12 +185,6 @@ and Y axis.
 
 
 
-
-
-
-
-Breakout Game
-
 The code above shows the collision check for the ball. To break it down, it checks if the ball is
 
 intersecting the X and/or Y axis and if it is ‘GOING TO’ intersect it the next frame. The reason for me to
@@ -216,13 +199,6 @@ presented a new bug. The new bug will cause the ball to get stuck inside of the 
 
 the bat the same instant/frame the ball is going to hit the side of the bat.
 
-
-
-
-
-
-
-Breakout Game
 
 Adding another check, I made sure the bat will stay inside of the screen by checking if the bat WILL
 
@@ -250,7 +226,7 @@ the ball is intersecting X and/or Y and
 
 so on.
 
-Reflection
+## Reflection
 
 Looking at the final version of
 
@@ -276,11 +252,6 @@ better access modifiers and data types that would have enhanced the memory usage
 
 
 
-
-
-
-
-Breakout Game
 
 of the game. Another thing this game would’ve been great would have been automated testing, making
 
