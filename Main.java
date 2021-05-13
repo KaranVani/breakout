@@ -48,7 +48,7 @@ public class Main extends Application
 
         // Link them together so they can talk to each other
         // Each one has instance variables for the other two
-        music();
+        music();  //Let there be music! 
         model.view = view;
         model.controller = controller;
         
@@ -69,6 +69,7 @@ public class Main extends Application
         Debug.trace("Main::start: Breakout running"); 
     }
     
+    // used MediaPlayer for the game
     MediaPlayer mediaPlayer;
 	public void music() {
 		String s = "res/music.mp3";
